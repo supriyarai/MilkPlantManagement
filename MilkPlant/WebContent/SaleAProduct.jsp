@@ -31,7 +31,8 @@ Set<String> set=product.getCategory();
   <br>
   <br>
   <input type="submit" name="action" value="selectCategories" /></br>
-   ${notAvail}
+   ${notAvail}</br>
+   <a href="DashBoard.jsp">Home</a>
   </center>
   
 

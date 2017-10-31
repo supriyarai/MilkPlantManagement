@@ -17,7 +17,7 @@ List<String> list=productDto.listOfProduct();
 %>
 
  <center>
- Select the product:
+ Select the Stock:
 <select name="product">
 <% 
 for(String product:list)
@@ -32,7 +32,9 @@ out.println(product);
 </br>
 Quantity to be added:
 <input type="text" name="quantity" value="" /></br>
-     <input type="submit" value="updateStock" name="action"/></th>
+     <input type="submit" value="updateStock" name="action"/></br>
+    <a href="DashBoard.jsp">Home</a>
+
 </center>
 </form>
 

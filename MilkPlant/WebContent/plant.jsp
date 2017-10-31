@@ -33,6 +33,10 @@
                     <th colspan="2">
                         <input type="submit" name="action" value="addPlant" />
                     </tr>
+                    <tr>
+                        <th colspan="2"> <a href="AdminDashBoard.jsp">Home</a></br></br>
+</th>
+                    </tr>
                    
                 </tbody>
             </table>

@@ -12,13 +12,12 @@
             <table border="1" width="30%" cellpadding="3">
                 <thead>
                     <tr>
-                        <th colspan="2">Make the Order</th>
+                        <th colspan="2">Take the Order</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Order Id</td>
-                        <%out.println(request.getParameter("idOfOrder"));%>
+                        <td>Order Number</td>
                         <td><input type="text" name="orderid" value=${idOfOrder} } /></td>
                     </tr>
                     <tr>

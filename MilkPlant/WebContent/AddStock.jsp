@@ -13,12 +13,12 @@
             <table border="1" width="30%" cellpadding="5">
                 <thead>
                     <tr>
-                        <th colspan="2">Enter Stock Details Here</th>
+                        <th colspan="2">Enter New Stock Details</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Product Name</td>
+                        <td>Stock Name</td>
                      <% 
                      List<String> productName=(List)request.getAttribute("listOfProduct");
               
@@ -38,7 +38,7 @@ out.println(product);
      </select>  </td>                
                     </tr>
                     <tr>
-                        <td>Stock Quantity</td>
+                        <td> Quantity</td>
                         <td><input type="text" name="Pquantity" value="" /></td>
                     </tr>
                     
@@ -46,9 +46,15 @@ out.println(product);
                     
                        <th colspan="2">
                         <input type="submit" value="addstock" name="action"/></th>
+                        </br>
+                        ${addedStock}
                     </tr>
                     
-                   
+                   <tr>
+                        <th colspan="2"> <a href="DashBoard.jsp">Home</a></br>
+                        <a href="UpdateStock.jsp">UpdateStock</a>
+</th>
+                    </tr>
                 </tbody>
             </table>
             </center>

@@ -39,7 +39,10 @@
                         <input type="submit" name="action" value="addProduct" />
                         </th>
                     </tr>
-                    
+                    <tr>
+                        <th colspan="2"> <a href="DashBoard.jsp">Home</a></br></br>
+</th>
+                    </tr>
                    
                 </tbody>
             </table>

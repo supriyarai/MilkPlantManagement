@@ -10,7 +10,6 @@
 <body>
 <%
 OrderDto order=(OrderDto)request.getAttribute("orderDetails");
-out.println(order.getTotalPrice());
 %>
 <form >
             <center>
@@ -22,7 +21,7 @@ out.println(order.getTotalPrice());
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Order Id</td>
+                        <td>Bill Number</td>
                         <td><input type="text" name="orderId" value="<%=request.getParameter("orderid")%>" /></td>
                     </tr>
                     <tr>
@@ -30,7 +29,7 @@ out.println(order.getTotalPrice());
                         <td><input type="text" name="productName" value="<%=request.getParameter("productName")%>" /></td>
                     </tr>
                      <tr>
-                        <td>User Id</td>
+                        <td>Customer Id</td>
                         <td><input type="text" name="userId" value="<%=request.getParameter("userId")%>" /></td>
                     </tr>
                      <tr>
@@ -44,8 +43,7 @@ out.println(order.getTotalPrice());
                     <tr>
                     <th colspan="2">
                         <a href="DashBoard.jsp">Home</a></th>
-                        
-                    </tr>
+                        </tr>
                    
                 </tbody>
             </table>

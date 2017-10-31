@@ -36,6 +36,11 @@ List<ProductDto> products=product.getAllProduct();
                         <input type="submit" name="action" value="updateProduct" />
                         </th>
                         </tr>
+                   </br>
+                   <tr>
+                        <th colspan="2"> <a href="DashBoard.jsp">Home</a></br></br>
+</th>
+                    </tr>     
     </center>
     
     </form>

@@ -28,10 +28,13 @@ List<String> list=(List)request.getAttribute("ProductNameList");
   </select>
   
   
-  <tr>
-                        <td>Enter the packets to be oredered</td>
-                        <td><input type="text" name="Enter the packets to be oredered" value="" /></td>
-                    </tr>
+  
+                        Enter the packets to be oredered
+                        <input type="text" name="Enter the packets to be oredered" value="" /></br>
+                   
+                       <a href="DashBoard.jsp">Home</a>
+
+                    
   
   
   

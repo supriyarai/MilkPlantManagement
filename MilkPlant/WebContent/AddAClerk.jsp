@@ -12,7 +12,7 @@
             <table border="1" width="30%" cellpadding="3">
                 <thead>
                     <tr>
-                        <th colspan="2">Login Here</th>
+                        <th colspan="2">Add the Clerk</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,7 +41,10 @@
                     <th colspan="2">
                         <input type="submit" name="action" value="addClerk" />
                     </tr>
-                   
+                   <tr>
+                        <th colspan="2"> <a href="AdminDashBoard.jsp">Home</a></br></br>
+</th>
+                    </tr>
                 </tbody>
             </table>
             </center>

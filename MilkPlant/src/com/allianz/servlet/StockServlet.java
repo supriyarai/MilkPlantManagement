@@ -109,11 +109,14 @@ public class StockServlet extends HttpServlet {
 				{
 					request.setAttribute("addStock","added the stock ..");
 
-					RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/ClerkSucess.jsp");
-				}
+					RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/ClerkSucess.jsp");				logger.info("after forwardi ng");
+					dispatcher.forward(request, response);				}
 				//*********************************************************
 				else
-				{ logger.info("i am in else");
+					
+				{					request.setAttribute("addedStock","already added in stock. You may choose another or Update the Stock ..");
+
+					logger.info("i am in else");
 					
 				addStocklink(request,response);
 				}
