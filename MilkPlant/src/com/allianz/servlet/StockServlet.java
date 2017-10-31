@@ -57,9 +57,7 @@ public class StockServlet extends HttpServlet {
 					updateStock(request,response);
 				
 		}
-				/*if(request.getParameter("addstock")!=null){
-					logger.info("hdskjghj");
-				}*/
+				
 				
 			}
 

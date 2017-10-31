@@ -14,20 +14,29 @@ import com.allianz.dto.UserDto;
 import com.allianz.serviceInterface.UserServiceInterface;
 import com.allianz.servlet.StockServlet;
 
-
+/**
+ * 
+ * @author User
+ *
+ */
 public class UserServiceImp implements UserServiceInterface{
 	private static final Logger logger=Logger.getLogger(UserServiceImp.class);
 
-	
 
+	/**
+	 * @param userId of int type
+	 * @return UserDto
+	 */
 	public UserDto getUserById(int userId) {
 		// TODO Auto-generated method stub
 		UserDaoInterface userDao=new UserDaoImp();
 		UserDto userDetails=userDao.userDetailById(userId);
 		return userDetails;
-	}
+	}//getUserById() ends
 
-	
+	/**
+	 * @return Set<String>
+	 */
 
 	@Override
 	public Set<String> getUserType() 
@@ -35,40 +44,37 @@ public class UserServiceImp implements UserServiceInterface{
 		UserDaoImp userDao=new UserDaoImp();
 		List<UserDto> users=	userDao.getAllUsers();
 
-		String[] str= new String[users.size()];
+		String[] userString= new String[users.size()];
 		int j=0;
-		String s1=null;
-		String s2= " ";
+		String userType=null;
+		String availabletype= " ";
 		Set set= new HashSet();
 		for(int i=0;i<users.size();i++)	
 		{
 
-			str[j]=users.get(i).getUserType();
-			s1= str[j];
+			userString[j]=users.get(i).getUserType();
+			userType= userString[j];
 			j++;
-
-
-
-
-			if(s2.indexOf(s1)==-1)
+			if(availabletype.indexOf(userType)==-1)
 			{
-				s2+=str[i] + " ";
-set.add(s1);
+				availabletype+=userString[i] + " ";
+				set.add(userType);
 
 			}
 		}
 		return set;
-		
-		
-	}
+	}//getUserType() ends
 
 
-
+	/**
+	 * @param user of UserDto type
+	 * @return UserDto 
+	 */
 	@Override
 	public UserDto addUser(UserDto user)
 	{
-UserDaoImp userDao=new UserDaoImp();
+		UserDaoImp userDao=new UserDaoImp();
 		return userDao.addUser(user);
-	}
+	}//addUser() ends
 
-}
+}//class ends

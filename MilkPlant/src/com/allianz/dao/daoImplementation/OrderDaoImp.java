@@ -29,7 +29,7 @@ import com.allianz.servlet.StockServlet;
 public class OrderDaoImp implements OrderDaoInterface {
 	private static final Logger logger=Logger.getLogger(OrderDaoImp.class);
 
-	
+
 	/**
 	 * doing connection
 	 */
@@ -42,7 +42,7 @@ public class OrderDaoImp implements OrderDaoInterface {
 			"insert into " + OrderDto.TABLENAME +"("+OrderDto.PRODUCTNAME+","+OrderDto.USERID+
 			","+OrderDto.NUMBEROFPRODUCT+","+OrderDto.TOTALPRICE+
 			")" +" values(?,?,?,?)";
-	
+
 	/**
 	 * query for fetching the product by its id
 	 */
@@ -50,7 +50,7 @@ public class OrderDaoImp implements OrderDaoInterface {
 	/**
 	 * fetching all the products present in stock
 	 */
-	
+
 	public static String getAllStockQuery="select *from "+OrderDto.TABLENAME;
 	/**
 	 * method to add an order to the stock
@@ -82,7 +82,9 @@ public class OrderDaoImp implements OrderDaoInterface {
 		}//catch ends
 		return order;	
 
-	}
+	}//add order ends
+
+
 	/**
 	 * fetching the details of the order by its id
 	 */
@@ -90,36 +92,24 @@ public class OrderDaoImp implements OrderDaoInterface {
 	public OrderDto detailsByOrderId(int orderid) {
 		// TODO Auto-generated method stub
 		int orderId;
-		/**
-		 * name of the product of which order is being given
-		 */
 		ProductDto productName;
 		String productsName;
-		/**
-		 * id of the user(customer) who is ordering the product
-		 */
 		UserDto userId;
 		int idOfUser;
-		/**
-		 * number of packets customer wants to order
-		 */
 		int numberOfProduct;
-		/**
-		 * total price i.e. the price of which customer has given order
-		 */
 		int totalPrice;
 		try
 		{
 			java.sql.PreparedStatement prepareStatement= connection.prepareStatement(getProductQuery);
 			prepareStatement.setInt(1, orderid);
-			ResultSet rs=prepareStatement.executeQuery();
-			if(rs.next())
+			ResultSet resultSet=prepareStatement.executeQuery();
+			if(resultSet.next())
 			{
-				orderid =rs.getInt(1);
-				productsName=rs.getString(2);
-				idOfUser=rs.getInt(3);
-				numberOfProduct=rs.getInt(4);
-				totalPrice=rs.getInt(5);
+				orderid =resultSet.getInt(1);
+				productsName=resultSet.getString(2);
+				idOfUser=resultSet.getInt(3);
+				numberOfProduct=resultSet.getInt(4);
+				totalPrice=resultSet.getInt(5);
 				ProductServiceInterface productService=new ProductServiceImplementation();
 				productName=productService.getProduct(productsName);
 				UserServiceInterface userService=new UserServiceImp();
@@ -136,18 +126,20 @@ public class OrderDaoImp implements OrderDaoInterface {
 			logger.error(e);
 		}//catch ends
 		return null;
-	}
-/**
- * fetching the list of orders
- */
+	}//detailsByOrderId ends
+
+
+	/**
+	 * fetching the list of orders
+	 */
 	public List<OrderDto> listOfOrder() {
-		
+
 		int orderId;
 		ProductDto productName;
 		String nameOfProduct;
-        UserDto userId;
+		UserDto userId;
 		int IdOfUser;
-        int numberOfProduct;int totalPrice;
+		int numberOfProduct;int totalPrice;
 
 		List<OrderDto> listOfOrder= new ArrayList<OrderDto>();//for storing the details of all products
 		try
@@ -173,9 +165,9 @@ public class OrderDaoImp implements OrderDaoInterface {
 		}//try ends
 		catch (Exception r)
 		{
-			logger.error(e);
+			logger.error(r);
 		}//catch ends
 		return listOfOrder;
-	}
+	}//listOfOrder ends
 
-}
+}//class ends

@@ -134,8 +134,8 @@ public class ProductServlet extends HttpServlet {
 String productName=request.getParameter("product");
 String productPrice=request.getParameter("Updated Price of this product");
 int price=Integer.parseInt(productPrice);
-ProductServiceImplementation pr= new ProductServiceImplementation();
-pr.updateProduct(productName, price);
+ProductServiceImplementation productServiceImp= new ProductServiceImplementation();
+productServiceImp.updateProduct(productName, price);
 request.setAttribute("updateProduct","updated the product");
 
 RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/ClerkSucess.jsp");
@@ -155,9 +155,9 @@ dispatcher.forward(request, response);
 		
 		PlantServiceInterface plantService=new PlantServiceImplemenation();
 		PlantDto plantDeatils=plantService.detailByPlantName(plantName);
-		ProductDto p= new ProductDto(productName, price, productCategory,plantDeatils);
-		ProductServiceImplementation pr= new ProductServiceImplementation();
-		pr.addAProduct(p);
+		ProductDto productDto= new ProductDto(productName, price, productCategory,plantDeatils);
+		ProductServiceImplementation productImp= new ProductServiceImplementation();
+		productImp.addAProduct(productDto);
 		request.setAttribute("product","added the Product");
 	RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/ClerkSucess.jsp");
 	dispatcher.forward(request, response);
@@ -170,16 +170,7 @@ dispatcher.forward(request, response);
 		dispatcher.forward(request, response);
 	}
 
-	/*private void addProductDetails(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException 
-	{
-		
-		//ProductDto p= new ProductDto("", productPrice, productCategory)
-		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/AddAProduct.jsp");
-		logger.info("after forwarding");
-		dispatcher.forward(request, response);
-		response.sendRedirect("/addProduct");
-	}*/
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

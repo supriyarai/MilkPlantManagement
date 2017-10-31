@@ -34,12 +34,22 @@ public class ProductDao implements ProductDaoInterface
 public static String addProductQuery=
 "insert into " + ProductDto.TABLENAME +"("+ProductDto.COLPRODUCTNAME+","+ProductDto.COLPRODUCTPRICE+
 ","+ProductDto.COLPRODUCTCATEGORY+","+ProductDto.COLPLANTNAME+")" +" values(?,?,?,?)";
-
+/**
+ * query for fetching a product of which name is given
+ */
 public static String getProductQuery="select * from "+ProductDto.TABLENAME +" where " + ProductDto.COLPRODUCTNAME+"=? ";
+/**
+ * query for fetching all the products
+ */
 public static String getAllProductQuery="select *from "+ProductDto.TABLENAME;
+/**
+ * query for updating the product  price of which productname is given
+ */
 public static String updateProductQuery="UPDATE "+ProductDto.TABLENAME+" SET "+ProductDto.COLPRODUCTPRICE+" = ? "+""
 		+ " WHERE "+ProductDto.COLPRODUCTNAME+" = ?  ";
-
+/**
+ * query for deleting the product of which name is given
+ */
 public static String delProductQuery="delete from  "+ProductDto.TABLENAME + " where "+ProductDto.COLPRODUCTNAME+"=? ";
 
 /**
@@ -71,16 +81,16 @@ public ProductDto addProduct(ProductDto product)//
 		logger.error(e);
 	}//catch ends
 	return product;
-}//add ends
+}//add() ends
 
 /**
- * 
+ * fetching the details(name,price ,category and plant name) of a particular product(through name)
  * @param Product_Id of which you want to fetch product
  * @return the product of that particular id
  */
 
 
-	public  ProductDto getProduct(String ProductName)//fetching the details(name,price and category) of a particular product(through id)
+	public  ProductDto getProduct(String ProductName)//
 	{
 		java.sql.Connection connection=DbConnection.getConnection();
 		try
@@ -141,7 +151,7 @@ public ProductDto addProduct(ProductDto product)//
 		return products;
 
 	}
-	//getallmaterials ends
+	//getallProducts() ends
 
 /**
  * updating the price of the product of which name has been given and the price is also given
@@ -149,9 +159,15 @@ public ProductDto addProduct(ProductDto product)//
 	
 	public  boolean updateProduct(String productName, int productPrice)
 	{
-		try//try starts
+		/**
+		 * try starts
+		 */
+		try
 		{
-			java.sql.Connection connection= DbConnection.getConnection();//connection done
+			/**
+			 * connection done
+			 */
+			java.sql.Connection connection= DbConnection.getConnection();
 			java.sql.PreparedStatement prepareStatement= connection.prepareStatement(updateProductQuery);//plateform created
 
 			prepareStatement.setInt(1, productPrice);
@@ -176,9 +192,12 @@ public ProductDto addProduct(ProductDto product)//
 	 * deleting the product of which name has been given
 	 */
 
-	public  int delete(String productName)//deleting a particular raw material by its name
+	public  int delete(String productName)
 	{
-		java.sql.Connection connection= DbConnection.getConnection();//connection done
+		/**
+		 * connection done
+		 */
+		java.sql.Connection connection= DbConnection.getConnection();//
 		try
 		{
 			java.sql.PreparedStatement prepareStatement= connection.prepareStatement(delProductQuery);
@@ -202,8 +221,6 @@ public ProductDto addProduct(ProductDto product)//
 	 * fetching all the products of given category
 	 */
 	
-	
-	
 	@Override
 	public List<ProductDto> getAllProducts(String category) {
 		// TODO Auto-generated method stub
@@ -219,5 +236,5 @@ public ProductDto addProduct(ProductDto product)//
 			}
 		}
 		return productOfCategoryGiven;
-	}
-}
+	}//getAllProducts() ends
+}//class ends

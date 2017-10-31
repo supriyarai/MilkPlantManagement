@@ -30,29 +30,41 @@ public class OrderServiceImplementation implements OrderServiceInterface {
 
 	private static final Logger logger=Logger.getLogger(OrderServiceImplementation.class);
 
-
+	/**
+	 * @param order of OrderDto type
+	 * @return OrderDto
+	 */
 	public OrderDto placeOrder(OrderDto order) {
-        OrderDaoInterface orderdao=new OrderDaoImp();
-        ProductDaoInterface productDao=new ProductDao();
-        ProductDto product=productDao.getProduct(order.getProductName().getProductName());
-        int price=product.getProductPrice();
-        int totalPrice=price*order.getNumberOfProduct();
-        OrderDto newOrder=new OrderDto(order.getProductName(),order.getUserId(),order.getNumberOfProduct(), totalPrice);
-        orderdao.addOrder(newOrder);
+		OrderDaoInterface orderdao=new OrderDaoImp();
+		ProductDaoInterface productDao=new ProductDao();
+		ProductDto product=productDao.getProduct(order.getProductName().getProductName());
+		int price=product.getProductPrice();
+		int totalPrice=price*order.getNumberOfProduct();
+		OrderDto newOrder=new OrderDto(order.getProductName(),order.getUserId(),order.getNumberOfProduct(), totalPrice);
+		orderdao.addOrder(newOrder);
 		return newOrder;
-	}
+	}// placeOrder() ends
 
+	/**
+	 * @param orderId of int type
+	 * @return OrderDto
+	 */
 	public OrderDto orderDetailsById(int orderId) {
-        OrderDaoInterface orderService=new OrderDaoImp();
-        OrderDto order=orderService.detailsByOrderId(orderId);
+		OrderDaoInterface orderService=new OrderDaoImp();
+		OrderDto order=orderService.detailsByOrderId(orderId);
 		return order;
-	}
+	}//orderDetailsById() ends
 
+	/**
+	 * @param product of ProductDto type
+	 * @param quantityToOrder of int type
+	 * @return boolean type
+	 */
 	public Boolean checkAvalibity(ProductDto product, int quantityToOrder) {
 		StockServiceInterface stockService=new StockServiceImplementation();
 		StockDto stockDto=stockService.stockByName(product.getProductName());
 		int totalQuantity=stockDto.getStockTotalNumber();
-         logger.info("******************************************");
+		logger.info("******************************************");
 		logger.info(totalQuantity);
 		logger.info(quantityToOrder);
 		if((quantityToOrder>totalQuantity) || (quantityToOrder<=0) )
@@ -60,8 +72,12 @@ public class OrderServiceImplementation implements OrderServiceInterface {
 			return false;
 		}
 		return true;
-	}
+	}//checkAvalibity() ends
 
+	/**
+	 * fetching the orderId
+	 * @return int
+	 */
 	public int getOrderID() {
 		// TODO Auto-generated method stub
 		OrderDaoInterface orderDto=new OrderDaoImp();
@@ -72,14 +88,19 @@ public class OrderServiceImplementation implements OrderServiceInterface {
 			logger.info("orderId******************"+orderId);
 		}
 		return orderId+1;
-	}
+	}//getOrderID() ends
 
+	/**
+	 * @param order of OrderDto type
+	 * @param quantity
+	 * @return Boolean
+	 */
 	public Boolean stockAfterOrder(OrderDto order,int quantity) {
 		// TODO Auto-generated method stub
 		StockServiceInterface stockService=new StockServiceImplementation();
 		StockDto stock=stockService.stockByName(order.getProductName().getProductName());
-	Boolean status=stockService.stockAfterOrder(stock, quantity);
+		Boolean status=stockService.stockAfterOrder(stock, quantity);
 		return status;
-	}
+	}//stockAfterOrder() ends
 
-}
+}//class ends

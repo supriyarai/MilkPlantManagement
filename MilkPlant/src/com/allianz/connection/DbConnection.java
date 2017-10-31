@@ -17,27 +17,27 @@ import com.allianz.servlet.StockServlet;
 public class DbConnection {
 	private static final Logger logger=Logger.getLogger(DbConnection.class);
 
-/**
- * initialising connection with null 
- */
+	/**
+	 * Initializing connection with null 
+	 */
 	private static Connection con =null;
 	/**
 	 * default constructor
 	 */
 	private DbConnection() {
 		super();
-	}
-/**
- * method for establishing the connection 
- * @return Connection type
- */
+	}//default constructor ends
+	/**
+	 * method for establishing the connection 
+	 * @return Connection type
+	 */
 	public static Connection getConnection() {
 		try {
 			if (con != null) 
 				if (!con.isClosed()) {
 					return con;
-				
-			}
+
+				}//if ends
 			ClassLoader classLoader = Thread.currentThread()
 					.getContextClassLoader();
 			InputStream input = classLoader
@@ -55,22 +55,23 @@ public class DbConnection {
 
 			String connectionString = dbProtocol + "://" + dbHost + ":"
 					+ dbPort + "/" + dbName;
-/**
- * registering the driver
- */
+			/**
+			 * registering the driver
+			 */
 			Class.forName(dbDriver);
-		logger.info("registered");
+			logger.info("registered");
 			/**
 			 * connection with database
 			 */
 			con = DriverManager.getConnection(connectionString, dbUser,
 					dbPassword);
 			logger.info("connection done");
-		} catch (Exception e) 
+		}//try ends
+		catch (Exception e) 
 		{
 			e.printStackTrace();
 			logger.error(e);
-		}
+		}//catch ends
 		return con;
-	}
-}
+	}//getConnection ends
+}//class ends

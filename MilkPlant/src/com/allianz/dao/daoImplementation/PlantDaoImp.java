@@ -41,7 +41,7 @@ public class PlantDaoImp implements PlantDaoInterface  {
 	/**
 	 * query for fetching all the product present in plant
 	 */
-	
+
 	public static String getAllPlantQuery="select *from "+PlantDto.TABLENAME;
 	/**
 	 * adding a plant
@@ -62,10 +62,11 @@ public class PlantDaoImp implements PlantDaoInterface  {
 
 			}//try ends
 		catch (SQLException e) {
-//logger.error(e);		
-			}//catch ends
+			//logger.error(e);		
+		}//catch ends
 		return plant;
-	}
+	}//addPlant() ends
+
 	/**
 	 * fetching the list of all plants
 	 */
@@ -76,23 +77,23 @@ public class PlantDaoImp implements PlantDaoInterface  {
 		 * for storing the details of all products
 		 */
 		List<PlantDto> plantList= new ArrayList<PlantDto>();
-		 int plantId;
-		
-		 String plantName;
-		
-		 String plantLocation;
-		
-		 String plantCity;
+		int plantId;
+
+		String plantName;
+
+		String plantLocation;
+
+		String plantCity;
 		try
 		{
 			PreparedStatement prepareStatement= connection.prepareStatement(getAllPlantQuery);
 			ResultSet resultSet= prepareStatement.executeQuery();
 			while(resultSet.next())
 			{
-				 plantId= resultSet.getInt(1);
-				 plantName= resultSet.getString(2);
-				 plantLocation= resultSet.getString(3);
-				 plantCity=resultSet.getString(4);
+				plantId= resultSet.getInt(1);
+				plantName= resultSet.getString(2);
+				plantLocation= resultSet.getString(3);
+				plantCity=resultSet.getString(4);
 
 				PlantDto plant= new PlantDto(plantId, plantName, plantLocation, plantCity);
 
@@ -105,22 +106,18 @@ public class PlantDaoImp implements PlantDaoInterface  {
 		}//catch ends
 		return plantList;
 
-		
+
 	}//add plant ends
-	
-	
+
+
 	/**
 	 * fetching the details of the plant of which name has been given
 	 */
-
 	public PlantDto DetailByName(String plantName) {
 		int plantId;
-		
-		 String nameOfPlant;
-		
-		 String plantLocation;
-		
-		 String plantCity;
+		String nameOfPlant;
+		String plantLocation;
+		String plantCity;
 
 		try
 		{
@@ -133,7 +130,7 @@ public class PlantDaoImp implements PlantDaoInterface  {
 				nameOfPlant=resultSet.getString(2);
 				plantLocation=resultSet.getString(3);
 				plantCity=resultSet.getString(4);
-				
+
 				PlantDto	plant= new PlantDto(plantId, plantName, plantLocation, plantCity);
 				return plant;
 			}//if ends
@@ -144,9 +141,9 @@ public class PlantDaoImp implements PlantDaoInterface  {
 		}//catch ends
 		return null;
 		// TODO Auto-generated method stub
-		 
-		
+
+
 	}//fetching details by name ends
-	
-	
-}
+
+
+}//class ends

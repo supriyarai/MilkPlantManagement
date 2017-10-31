@@ -15,7 +15,11 @@ import com.allianz.dto.ProductDto;
 import com.allianz.dto.UserDto;
 import com.allianz.servlet.StockServlet;
 
-
+/**
+ * 
+ * @author User
+ *
+ */
 public class UserDaoImp implements UserDaoInterface{
 	private static final Logger logger=Logger.getLogger(UserDaoImp.class);
 
@@ -26,6 +30,10 @@ public class UserDaoImp implements UserDaoInterface{
 	public static String getUserQuery="select * from "+UserDto.TABLENAME +" where " + UserDto.USERID+"=? ";
 	public static String getAllUserQuery="select *from "+UserDto.TABLENAME;
 
+	/**
+	 * @param userId
+	 * @return UserDto
+	 */
 	public UserDto userDetailById(int userid) {
 		// TODO Auto-generated method stub
 		java.sql.Connection connection=DbConnection.getConnection();
@@ -52,22 +60,13 @@ public class UserDaoImp implements UserDaoInterface{
 		{
 		}//catch ends
 		return null;
-	}
+	}//userDetailById() ends
 	
-	
-	
-	
-	
-	
-
-
-
-
-			
-	
-	
-	
-	public  List<UserDto> getAllUsers()//fetching the details(name,price type) of all the products produced
+/**
+ * fetching the details(name,price type) of all the products produced
+ * @return	List<UserDto>
+ */
+	public  List<UserDto> getAllUsers()
 	{
 		java.sql.Connection connection=DbConnection.getConnection();
 		List<UserDto> usersList= new ArrayList<UserDto>();//for storing the details of all products
@@ -95,8 +94,12 @@ public class UserDaoImp implements UserDaoInterface{
 		}//catch ends
 		return usersList;
 
-	}
+	}//getAllUsers () ends
 
+	/**
+	 * @param user of UserDto type
+	 * @return UserDto
+	 */
 @Override
 	public UserDto addUser(UserDto user) {
 		java.sql.Connection	connection=DbConnection.getConnection();
@@ -121,6 +124,6 @@ public class UserDaoImp implements UserDaoInterface{
 			//logger.error(e);
 		}//catch ends
 		return user;
-	}
+	}//addUser() ends
 
-}
+}//class ends

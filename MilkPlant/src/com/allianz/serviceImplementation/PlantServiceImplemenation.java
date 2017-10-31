@@ -29,7 +29,7 @@ public class PlantServiceImplemenation implements PlantServiceInterface{
 		PlantDaoInterface plantDao=new PlantDaoImp();
 		plantDao.addPlant(plant);
 		return plant;
-	}
+	}//addPlant() ends
 
 	/* (non-Javadoc)
 	 * @see com.allianz.serviceInterface.PlantServiceInterface#detailsOfAllPlant()
@@ -41,7 +41,7 @@ public class PlantServiceImplemenation implements PlantServiceInterface{
 
 		List<PlantDto> listOfPlant=plantDao.plantList();
 		return listOfPlant;
-	}
+	}//detailsOfAllPlant() ends
 
 	/* (non-Javadoc)
 	 * @see com.allianz.serviceInterface.PlantServiceInterface#detailByPlantName(java.lang.String)
@@ -52,7 +52,7 @@ public class PlantServiceImplemenation implements PlantServiceInterface{
 		PlantDaoInterface plantDao=new PlantDaoImp();
 		PlantDto plantDetail=plantDao.DetailByName(plantName);
 		return plantDetail;
-	}
+	}//detailByPlantName() ends
 
 
-}
+}//class ends
